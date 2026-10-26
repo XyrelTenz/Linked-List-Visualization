@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useDeckStore } from '../../stores/deck'
 import BrutalBadge from '../common/BrutalBadge.vue'
-import BrutalButton from '../common/BrutalButton.vue'
-import { ArrowRight, Sparkles, Cpu, Link as LinkIcon, Terminal, Compass, Link2, Zap } from 'lucide-vue-next'
-
-const router = useRouter()
-const deckStore = useDeckStore()
+import { ArrowRight, Sparkles, Cpu, Link as LinkIcon, Compass, Link2, Zap } from 'lucide-vue-next'
 
 const demoVal1 = ref(42)
 const demoVal2 = ref(99)
@@ -15,16 +9,6 @@ const isLinked = ref(true)
 
 function toggleLink() {
   isLinked.value = !isLinked.value
-}
-
-function startDeck() {
-  deckStore.nextSlide()
-  router.push('/slide/2')
-}
-
-function jumpToPlayground() {
-  deckStore.setSlide(4) // slide 5
-  router.push('/slide/5')
 }
 </script>
 
@@ -179,18 +163,6 @@ function jumpToPlayground() {
         </p>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
-        <BrutalButton variant="pink" size="md" @click="startDeck">
-          <span>START SLIDE DECK</span>
-          <ArrowRight class="w-4 h-4 stroke-[2.5]" />
-        </BrutalButton>
-
-        <BrutalButton variant="white" size="md" @click="jumpToPlayground">
-          <Terminal class="w-3.5 h-3.5" />
-          <span>JUMP TO VISUALIZER LAB</span>
-        </BrutalButton>
-      </div>
     </div>
 
     <!-- Quick Highlights 3-Card Footer: Analogies & Motivation -->

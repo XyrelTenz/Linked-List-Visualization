@@ -104,11 +104,13 @@ onUnmounted(() => {
     <Transition name="toast-fade">
       <div
         v-if="showEntryToast"
-        class="absolute top-4 left-1/2 -translate-x-1/2 pointer-events-auto bg-[#111111] text-[#ffffff] px-4 py-2 border-2 border-white shadow-[4px_4px_0px_#111111] flex items-center gap-2.5 font-mono text-xs"
+        class="fixed top-3 left-1/2 -translate-x-1/2 pointer-events-auto bg-[#111111] text-[#ffffff] px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-white shadow-[3px_3px_0px_#111111] flex items-center justify-center gap-1.5 sm:gap-2.5 font-mono text-xs max-w-[calc(100vw-1.5rem)] text-center z-[1000]"
       >
-        <span class="w-2 h-2 rounded-full bg-[#3ddc97] animate-pulse"></span>
-        <span class="font-bold text-[#ffd23f]">PRESENTATION MODE ACTIVE</span>
-        <span class="text-neutral-300">| Press <kbd class="px-1 py-0.5 bg-neutral-800 border border-neutral-600 text-white font-bold text-[10px]">F</kbd> or <kbd class="px-1 py-0.5 bg-neutral-800 border border-neutral-600 text-white font-bold text-[10px]">ESC</kbd> to exit • <kbd class="px-1 py-0.5 bg-neutral-800 border border-neutral-600 text-white font-bold text-[10px]">Q</kbd> for quiz</span>
+        <span class="font-bold text-[#ffd23f] whitespace-nowrap">PRESENTATION MODE</span>
+        <span class="text-neutral-300 hidden md:inline">|</span>
+        <span class="text-neutral-300 text-[10px] sm:text-xs hidden sm:inline">
+          Press <kbd class="px-1 py-0.5 bg-neutral-800 border border-neutral-600 text-white font-bold text-[10px]">F</kbd> or <kbd class="px-1 py-0.5 bg-neutral-800 border border-neutral-600 text-white font-bold text-[10px]">ESC</kbd> to exit • <kbd class="px-1 py-0.5 bg-neutral-800 border border-neutral-600 text-white font-bold text-[10px]">Q</kbd> for quiz
+        </span>
       </div>
     </Transition>
 

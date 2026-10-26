@@ -193,8 +193,8 @@ function openQuizView() {
             </div>
           </div>
 
-          <!-- Slide List: Allocates all remaining vertical space evenly -->
-          <div class="flex-1 flex flex-col justify-between gap-1.5 sm:gap-2 min-h-0">
+          <!-- Slide List: Allocates all remaining vertical space evenly with clean scrolling -->
+          <div class="flex-1 flex flex-col justify-start sm:justify-between gap-1.5 sm:gap-2 min-h-0 overflow-y-auto pr-0.5 scrollbar-thin">
             <div
               v-for="(slide, index) in deckStore.slides"
               :key="slide.id"
@@ -203,7 +203,7 @@ function openQuizView() {
                   if (el) slideItemRefs[index] = el as HTMLElement
                 }
               "
-              class="slide-item border-2 border-[#111111] px-3 py-2 cursor-pointer transition-all flex items-center gap-2.5 select-none group flex-1 min-h-[44px]"
+              class="slide-item border-2 border-[#111111] px-2.5 sm:px-3 py-2 cursor-pointer transition-all flex items-center gap-2 sm:gap-2.5 select-none group flex-shrink-0 sm:flex-1 min-h-[46px]"
               :style="{ '--curtain-delay': `${(Math.abs(index - 4.5) * 0.045).toFixed(3)}s` }"
               :class="[
                 focusedIndex === index
@@ -229,15 +229,15 @@ function openQuizView() {
 
               <!-- Content -->
               <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between gap-1 mb-0.5">
-                  <h4 class="font-display text-xs sm:text-sm truncate uppercase leading-tight">
+                <div class="flex items-center justify-between gap-1.5 mb-1">
+                  <h4 class="font-display text-xs sm:text-sm font-black uppercase leading-tight truncate">
                     {{ slide.title }}
                   </h4>
-                  <BrutalBadge :variant="slide.color" size="sm">
+                  <BrutalBadge :variant="slide.color" size="sm" class="shrink-0 text-[10px] px-1.5 py-0.5">
                     {{ slide.badge }}
                   </BrutalBadge>
                 </div>
-                <p class="font-body text-xs text-neutral-700 line-clamp-1">
+                <p class="font-body text-[11px] sm:text-xs text-neutral-700 leading-snug break-words">
                   {{ slide.description }}
                 </p>
               </div>
