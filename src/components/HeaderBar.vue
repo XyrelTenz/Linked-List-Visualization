@@ -42,8 +42,8 @@ function goToQuiz() {
     </div>
 
     <div class="max-w-7xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-3">
-      <!-- Left: Logo & Topic Tag -->
-      <div class="flex items-center gap-2.5">
+      <!-- Left: Logo & Topic Tag (Hidden on small screen so topbar can exhale space) -->
+      <div class="hidden sm:flex items-center gap-2.5">
         <div class="flex items-center justify-center w-8 h-8 bg-[#ffd23f] border-2 border-[#111111] shadow-[2px_2px_0px_#111111] font-display text-sm font-black">
           LL
         </div>
@@ -72,7 +72,7 @@ function goToQuiz() {
       </div>
 
       <!-- Right: Utility Controls -->
-      <div class="flex items-center gap-1.5 sm:gap-2">
+      <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-1.5 sm:gap-2">
         <!-- Shortcuts / Help button -->
         <button
           type="button"
