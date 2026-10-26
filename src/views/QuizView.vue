@@ -407,8 +407,8 @@ const answersMap = [
       </div>
 
       <div class="max-w-7xl mx-auto px-2 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-4 overflow-x-auto sm:overflow-visible">
-        <!-- Left: Quiz Badge & Test Section -->
-        <div class="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink-0">
+        <!-- Left: Quiz Badge & Test Section (Hidden on small screen for compact mobile header) -->
+        <div class="hidden sm:flex items-center gap-1.5 sm:gap-3 min-w-0 shrink-0">
           <button
             type="button"
             class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-[#ff3d81] text-white border-2 border-[#111111] shadow-[2px_2px_0px_#111111] font-display text-xs sm:text-sm tracking-wider shrink-0 cursor-pointer hover:bg-[#ff1e6d]"
@@ -416,7 +416,7 @@ const answersMap = [
             @click="triggerQuizTimeSplash"
           >
             <Sparkles class="w-3.5 h-3.5 fill-white shrink-0" />
-            <span class="font-black">QUIZ<span class="hidden sm:inline">&nbsp;TIME</span></span>
+            <span class="font-black">QUIZ TIME</span>
           </button>
 
           <div class="hidden md:flex items-center gap-2 border-l-2 border-[#111111] pl-3">
@@ -502,8 +502,8 @@ const answersMap = [
             <span class="hidden xl:inline font-bold">{{ isFullscreen ? 'WINDOW' : 'PPT (F)' }}</span>
           </button>
 
-          <!-- Question Counter -->
-          <div class="px-2 sm:px-3 py-1 bg-[#111111] text-[#ffd23f] font-mono font-black text-xs sm:text-sm border-2 border-black shadow-[2px_2px_0_#000] whitespace-nowrap shrink-0">
+          <!-- Question Counter (Hidden on small screen for compact mobile header) -->
+          <div class="hidden sm:block px-2 sm:px-3 py-1 bg-[#111111] text-[#ffd23f] font-mono font-black text-xs sm:text-sm border-2 border-black shadow-[2px_2px_0_#000] whitespace-nowrap shrink-0">
             Q {{ String(currentId).padStart(2, '0') }} / 15
           </div>
 
@@ -658,17 +658,18 @@ const answersMap = [
         </div>
       </div>
 
-      <div class="mt-4 sm:mt-6 bg-[#ffffff] border-2 sm:border-3 border-[#111111] shadow-[4px_4px_0px_#111111] p-2 sm:p-3 overflow-x-auto">
-        <div class="flex items-center justify-between gap-1 sm:gap-2 min-w-[580px] sm:min-w-0">
+      <!-- Question Pagination Navigation Strip -->
+      <div class="mt-4 sm:mt-6 bg-[#ffffff] border-2 sm:border-3 border-[#111111] shadow-[4px_4px_0px_#111111] p-3 sm:p-4 overflow-x-auto scrollbar-thin">
+        <div class="flex items-center justify-between gap-1.5 sm:gap-2 min-w-[620px] sm:min-w-0 px-1 py-1">
           <button
             v-for="q in QUIZ_QUESTIONS"
             :key="q.id"
             :ref="(el) => { if (el) paginationRefs[q.id] = el as HTMLElement }"
             type="button"
-            class="flex-1 py-1 sm:py-1.5 px-1 border-2 border-[#111111] font-mono text-xs font-black transition-all flex flex-col items-center justify-center min-w-[34px] focus:outline-none"
+            class="flex-1 py-1.5 sm:py-2 px-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] font-mono text-xs font-black transition-colors flex items-center justify-center min-w-[36px] cursor-pointer focus:outline-none"
             :class="[
               Number(currentId) === q.id
-                ? 'bg-[#111111] text-[#ffd23f] border-2 sm:border-3 border-[#111111] shadow-[3px_3px_0px_#ff3d81] -translate-y-1 scale-105 font-black ring-2 ring-black z-10'
+                ? 'bg-[#111111] text-[#ffd23f]'
                 : q.sectionColor === 'pink'
                   ? 'bg-white hover:bg-[#ff3d81]/20 text-[#111111]'
                   : q.sectionColor === 'yellow'
@@ -679,10 +680,6 @@ const answersMap = [
             @click="goToQuestion(q.id)"
           >
             <span>{{ String(q.id).padStart(2, '0') }}</span>
-            <span
-              v-if="Number(currentId) === q.id"
-              class="w-1.5 h-1.5 rounded-full bg-[#ff3d81] mt-0.5 animate-pulse"
-            ></span>
           </button>
         </div>
       </div>
