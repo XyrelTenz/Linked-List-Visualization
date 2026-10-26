@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-candy-pink: #ff3d81;
+  --color-candy-yellow: #ffd23f;
+  --color-candy-mint: #3ddc97;
+  --color-candy-lilac: #c8a2ff;
+  --color-candy-coral: #ff6b5e;
+  --color-candy-bg: #fdf9f0;
+  --color-candy-black: #111111;
+  --color-candy-white: #ffffff;
+
+  --font-display: 'Archivo Black', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --shadow-candy-sm: 4px 4px 0px #111111;
+  --shadow-candy-md: 6px 6px 0px #111111;
+  --shadow-candy-lg: 9px 9px 0px #111111;
+  --shadow-candy-xl: 12px 12px 0px #111111;
+}
+
+/* Background grid pattern */
+.candy-grid-bg {
+  background-color: #fdf9f0;
+  background-image: 
+    linear-gradient(to right, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Neubrutalist Base Styles */
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111111;
+  background-color: #fdf9f0;
+}
+
+.font-display {
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-code, .font-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Shadows */
+.brutal-shadow-sm {
+  box-shadow: 4px 4px 0px #111111;
+}
+
+.brutal-shadow-md {
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.brutal-shadow-lg {
+  box-shadow: 9px 9px 0px #111111;
+}
+
+.brutal-shadow-xl {
+  box-shadow: 12px 12px 0px #111111;
+}
+
+/* Border */
+.brutal-border {
+  border: 2px solid #111111;
+}
+
+.brutal-border-b {
+  border-bottom: 2px solid #111111;
+}
+
+.brutal-border-t {
+  border-top: 2px solid #111111;
+}
+
+.brutal-border-r {
+  border-right: 2px solid #111111;
+}
+
+.brutal-border-l {
+  border-left: 2px solid #111111;
+}
+
+/* Button & interactive behaviors */
+.brutal-btn {
+  border: 2px solid #111111;
+  box-shadow: 4px 4px 0px #111111;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.12s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.brutal-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.brutal-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #111111;
+}
+
+.brutal-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: 2px 2px 0px #111111;
+}
+
+/* Card hover animation */
+.brutal-card-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-card-hover:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #111111;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf9f0;
+  border: 1px solid #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #111;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3d81;
+}
