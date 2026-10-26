@@ -533,10 +533,6 @@ const answersMap = [
         <!-- Section Tag & Time Limit -->
         <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 sm:mb-6 border-b-2 border-[#111111]">
           <div class="flex items-center gap-2">
-            <span
-              class="w-3 h-3 border border-black inline-block"
-              :class="question.sectionColor === 'pink' ? 'bg-[#ff3d81]' : question.sectionColor === 'yellow' ? 'bg-[#ffd23f]' : 'bg-[#3ddc97]'"
-            ></span>
             <span class="font-mono text-xs sm:text-sm font-black tracking-wider uppercase text-neutral-800">
               {{ question.section }}
             </span>
@@ -818,23 +814,25 @@ const answersMap = [
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t-2 border-black">
+          <div class="flex items-center justify-between gap-2 pt-2.5 border-t-2 border-black">
             <button
               type="button"
-              class="brutal-btn bg-[#ffd23f] px-3 sm:px-4 py-2 font-mono font-bold text-xs sm:text-sm border-2 border-black shadow-[3px_3px_0_#000] flex items-center gap-1.5"
+              class="brutal-btn flex-1 bg-[#ffd23f] px-2.5 sm:px-4 py-2 font-mono font-bold text-xs sm:text-sm border-2 border-black shadow-[3px_3px_0_#000] flex items-center justify-center gap-1 sm:gap-1.5 whitespace-nowrap cursor-pointer"
+              title="Restart Quiz (R)"
               @click="restartQuiz"
             >
-              <RotateCcw class="w-4 h-4 stroke-[2.5]" />
-              <span>RESTART QUIZ (R)</span>
+              <RotateCcw class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] shrink-0" />
+              <span>RESTART<span class="hidden sm:inline">&nbsp;QUIZ (R)</span></span>
             </button>
 
             <button
               type="button"
-              class="brutal-btn bg-[#ff6b5e] text-black px-4 sm:px-5 py-2 font-mono font-bold text-xs sm:text-sm border-2 border-black shadow-[3px_3px_0_#000] flex items-center gap-1.5"
+              class="brutal-btn flex-1 bg-[#ff6b5e] text-black px-2.5 sm:px-4 py-2 font-mono font-bold text-xs sm:text-sm border-2 border-black shadow-[3px_3px_0_#000] flex items-center justify-center gap-1 sm:gap-1.5 whitespace-nowrap cursor-pointer"
+              title="Return to Presentation (Q)"
               @click="exitQuiz"
             >
-              <span>RETURN TO PRESENTATION (Q)</span>
-              <ArrowRight class="w-4 h-4 stroke-[2.5]" />
+              <span><span class="hidden sm:inline">RETURN TO </span>PRESENTATION<span class="hidden sm:inline">&nbsp;(Q)</span></span>
+              <ArrowRight class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] shrink-0" />
             </button>
           </div>
         </div>
