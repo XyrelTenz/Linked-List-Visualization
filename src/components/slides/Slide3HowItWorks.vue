@@ -121,14 +121,14 @@ while (current !== null) {
 
       <!-- Logical Diagram: Head -> [10 | •] -> [20 | •] -> [30 | null] -->
       <div
-        class="py-2.5 flex items-center justify-start sm:justify-center overflow-x-auto gap-2 sm:gap-3 px-1"
+        class="pt-7 pb-4 sm:pt-8 sm:pb-5 flex items-center justify-start sm:justify-center overflow-x-auto gap-2 sm:gap-3 px-2 scrollbar-thin"
       >
         <!-- HEAD variable -->
         <div class="flex-shrink-0 flex flex-col items-center">
-          <div class="h-6 flex items-center">
+          <div class="h-7 flex items-center justify-center">
             <span
               v-if="currentStep === 0"
-              class="font-mono text-[10px] font-black bg-[#ffd23f] border border-black px-1.5 py-0.5 animate-bounce"
+              class="font-mono text-[10px] font-black bg-[#ffd23f] border border-black px-1.5 py-0.5 animate-bounce shadow-[1px_1px_0_#000]"
             >
               start!
             </span>
@@ -157,12 +157,12 @@ while (current !== null) {
         <!-- Node 1: 10 -->
         <div
           class="flex-shrink-0 flex flex-col items-center transition-all duration-300"
-          :class="currentStep === 0 ? 'scale-105 -translate-y-2' : ''"
+          :class="currentStep === 0 ? 'scale-105 -translate-y-1' : ''"
         >
-          <div class="h-6 flex items-center">
+          <div class="h-7 flex items-center justify-center">
             <span
               v-if="currentStep === 0"
-              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ffd23f] border border-black shadow-[1px_1px_0_#000] animate-bounce"
+              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ffd23f] border border-black shadow-[1px_1px_0_#000] animate-bounce whitespace-nowrap"
             >
               curr ⬇
             </span>
@@ -197,12 +197,12 @@ while (current !== null) {
         <!-- Node 2: 20 -->
         <div
           class="flex-shrink-0 flex flex-col items-center transition-all duration-300"
-          :class="currentStep === 1 ? 'scale-105 -translate-y-2' : ''"
+          :class="currentStep === 1 ? 'scale-105 -translate-y-1' : ''"
         >
-          <div class="h-6 flex items-center">
+          <div class="h-7 flex items-center justify-center">
             <span
               v-if="currentStep === 1"
-              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ffd23f] border border-black shadow-[1px_1px_0_#000] animate-bounce"
+              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ffd23f] border border-black shadow-[1px_1px_0_#000] animate-bounce whitespace-nowrap"
             >
               curr ⬇
             </span>
@@ -237,12 +237,12 @@ while (current !== null) {
         <!-- Node 3: 30 -->
         <div
           class="flex-shrink-0 flex flex-col items-center transition-all duration-300"
-          :class="currentStep === 2 ? 'scale-105 -translate-y-2' : ''"
+          :class="currentStep === 2 ? 'scale-105 -translate-y-1' : ''"
         >
-          <div class="h-6 flex items-center">
+          <div class="h-7 flex items-center justify-center">
             <span
               v-if="currentStep === 2"
-              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ffd23f] border border-black shadow-[1px_1px_0_#000] animate-bounce"
+              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ffd23f] border border-black shadow-[1px_1px_0_#000] animate-bounce whitespace-nowrap"
             >
               curr ⬇
             </span>
@@ -277,12 +277,12 @@ while (current !== null) {
         <!-- NULL -->
         <div
           class="flex-shrink-0 flex flex-col items-center transition-all duration-300"
-          :class="currentStep === 3 ? 'scale-105 -translate-y-2' : ''"
+          :class="currentStep === 3 ? 'scale-105 -translate-y-1' : ''"
         >
-          <div class="h-6 flex items-center">
+          <div class="h-7 flex items-center justify-center">
             <span
               v-if="currentStep === 3"
-              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ff6b5e] border border-black shadow-[1px_1px_0_#000] text-black animate-bounce"
+              class="font-mono text-xs font-bold px-2 py-0.5 bg-[#ff6b5e] border border-black shadow-[1px_1px_0_#000] text-black animate-bounce whitespace-nowrap"
             >
               STOP (null)
             </span>

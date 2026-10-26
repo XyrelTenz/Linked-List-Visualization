@@ -406,17 +406,17 @@ const answersMap = [
         ></div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-4">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-4 overflow-x-auto sm:overflow-visible">
         <!-- Left: Quiz Badge & Test Section -->
-        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <div class="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink-0">
           <button
             type="button"
-            class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-[#ff3d81] text-white border-2 border-[#111111] shadow-[2px_2px_0px_#111111] font-display text-xs sm:text-sm tracking-wider flex-shrink-0 cursor-pointer hover:bg-[#ff1e6d]"
+            class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-[#ff3d81] text-white border-2 border-[#111111] shadow-[2px_2px_0px_#111111] font-display text-xs sm:text-sm tracking-wider shrink-0 cursor-pointer hover:bg-[#ff1e6d]"
             title="Replay Quiz Time Intro"
             @click="triggerQuizTimeSplash"
           >
-            <Sparkles class="w-3.5 h-3.5 fill-white" />
-            <span class="font-black">QUIZ TIME</span>
+            <Sparkles class="w-3.5 h-3.5 fill-white shrink-0" />
+            <span class="font-black">QUIZ<span class="hidden sm:inline">&nbsp;TIME</span></span>
           </button>
 
           <div class="hidden md:flex items-center gap-2 border-l-2 border-[#111111] pl-3">
@@ -430,9 +430,9 @@ const answersMap = [
         </div>
 
         <!-- Center: 20-Second Countdown Display & Start/Pause Controls -->
-        <div class="flex items-center gap-1.5 sm:gap-3">
+        <div class="flex items-center gap-1 sm:gap-2.5 shrink-0">
           <div
-            class="px-2.5 sm:px-4 py-1 sm:py-1.5 border-2 border-[#111111] shadow-[3px_3px_0px_#111111] font-mono flex items-center gap-1.5 sm:gap-2 transition-all"
+            class="px-2 sm:px-3.5 py-1 sm:py-1.5 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] sm:shadow-[3px_3px_0px_#111111] font-mono flex items-center gap-1 sm:gap-2 shrink-0 transition-all"
             :class="[
               timeLeft === 0
                 ? 'bg-[#ff6b5e] text-white animate-bounce'
@@ -443,10 +443,10 @@ const answersMap = [
                     : 'bg-[#ffd23f] text-[#111111]'
             ]"
           >
-            <Clock v-if="timeLeft > 0" class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-            <AlertTriangle v-else class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+            <Clock v-if="timeLeft > 0" class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] shrink-0" />
+            <AlertTriangle v-else class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] shrink-0" />
 
-            <span class="font-black text-sm sm:text-lg tracking-wider">
+            <span class="font-black text-xs sm:text-base md:text-lg tracking-wider whitespace-nowrap">
               {{ String(timeLeft).padStart(2, '0') }}s
             </span>
 
@@ -466,54 +466,55 @@ const answersMap = [
 
           <button
             type="button"
-            class="brutal-btn p-1.5 sm:px-3 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1.5 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] transition-all"
+            class="brutal-btn px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 sm:gap-1.5 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] whitespace-nowrap shrink-0 transition-all cursor-pointer"
             :class="isPaused ? 'bg-[#3ddc97] text-black font-black ring-2 ring-black' : 'bg-white hover:bg-neutral-100 text-black'"
             :title="isPaused ? 'Start / Resume Timer (Space / P)' : 'Pause Timer (Space / P)'"
             @click="togglePause"
           >
-            <component :is="isPaused ? Play : Pause" class="w-3.5 h-3.5 stroke-[2.5]" :class="isPaused ? 'fill-black' : ''" />
-            <span class="font-black">{{ isPaused ? (timeLeft === TIMER_START ? 'START TIMER' : 'RESUME') : 'PAUSE' }}</span>
+            <component :is="isPaused ? Play : Pause" class="w-3.5 h-3.5 stroke-[2.5] shrink-0" :class="isPaused ? 'fill-black' : ''" />
+            <span class="font-black">{{ isPaused ? (timeLeft === TIMER_START ? 'START' : 'RESUME') : 'PAUSE' }}</span>
+            <span v-if="isPaused && timeLeft === TIMER_START" class="hidden md:inline font-black">&nbsp;TIMER</span>
           </button>
 
           <!-- Reset 20s Timer Button -->
           <button
             type="button"
-            class="brutal-btn bg-white hover:bg-[#ffd23f] p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111]"
+            class="brutal-btn bg-white hover:bg-[#ffd23f] p-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] shrink-0 cursor-pointer"
             title="Reset to 20s (R)"
             @click="resetTimer"
           >
-            <RotateCcw class="w-3.5 h-3.5 stroke-[2.5]" />
+            <RotateCcw class="w-3.5 h-3.5 stroke-[2.5] shrink-0" />
             <span class="hidden lg:inline">RESET</span>
           </button>
         </div>
 
         <!-- Right: Fullscreen (F), Question Counter & Exit Button -->
-        <div class="flex items-center gap-1.5 sm:gap-2">
+        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
           <!-- Fullscreen Toggle Button (F) -->
           <button
             type="button"
-            class="brutal-btn p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111]"
+            class="brutal-btn p-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] shrink-0 cursor-pointer"
             :class="isFullscreen ? 'bg-[#ffd23f]' : 'bg-white hover:bg-[#ffd23f]'"
             title="Toggle Fullscreen (F)"
             @click="toggleFullscreen"
           >
-            <component :is="isFullscreen ? Minimize2 : Maximize2" class="w-3.5 h-3.5 stroke-[2.5]" />
+            <component :is="isFullscreen ? Minimize2 : Maximize2" class="w-3.5 h-3.5 stroke-[2.5] shrink-0" />
             <span class="hidden xl:inline font-bold">{{ isFullscreen ? 'WINDOW' : 'PPT (F)' }}</span>
           </button>
 
           <!-- Question Counter -->
-          <div class="px-2.5 sm:px-3 py-1 bg-[#111111] text-[#ffd23f] font-mono font-black text-xs sm:text-sm border-2 border-black shadow-[2px_2px_0_#000] whitespace-nowrap">
+          <div class="px-2 sm:px-3 py-1 bg-[#111111] text-[#ffd23f] font-mono font-black text-xs sm:text-sm border-2 border-black shadow-[2px_2px_0_#000] whitespace-nowrap shrink-0">
             Q {{ String(currentId).padStart(2, '0') }} / 15
           </div>
 
           <!-- Exit Quiz Button (Q / ESC) -->
           <button
             type="button"
-            class="brutal-btn bg-[#ff6b5e] text-black px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111]"
+            class="brutal-btn bg-[#ff6b5e] text-black px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-mono font-bold flex items-center gap-1 border-2 border-[#111111] shadow-[2px_2px_0px_#111111] shrink-0 cursor-pointer"
             title="Exit Quiz to Presentation (Q / ESC)"
             @click="exitQuiz"
           >
-            <X class="w-3.5 h-3.5 stroke-[2.5]" />
+            <X class="w-3.5 h-3.5 stroke-[2.5] shrink-0" />
             <span class="hidden sm:inline">EXIT (Q)</span>
           </button>
         </div>

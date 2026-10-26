@@ -138,7 +138,7 @@ function handleDeleteVal() {
       <!-- Linked List Nodes Display Area -->
       <div
         ref="scrollContainerRef"
-        class="min-h-[160px] py-6 overflow-x-auto flex items-center justify-start gap-1 sm:gap-2 px-2 scrollbar-thin scroll-smooth"
+        class="min-h-[160px] pt-8 pb-6 overflow-x-auto flex items-center justify-start gap-1 sm:gap-2 px-2 scrollbar-thin scroll-smooth"
       >
         <!-- Empty list indicator -->
         <div
@@ -167,23 +167,23 @@ function handleDeleteVal() {
             class="flex-shrink-0 flex flex-col items-center transition-all duration-300 relative group"
             :class="[
               visualizer.activeIndex === index
-                ? 'scale-105 -translate-y-2'
+                ? 'scale-105 -translate-y-1'
                 : node.status === 'matched'
-                ? 'scale-110 -translate-y-2'
+                ? 'scale-110 -translate-y-1'
                 : ''
             ]"
           >
             <!-- Pointer indicator on top -->
-            <div class="h-6 flex items-center justify-center font-mono text-[11px] font-bold">
+            <div class="h-7 flex items-center justify-center font-mono text-[11px] font-bold">
               <span
                 v-if="visualizer.activeIndex === index"
-                class="bg-[#ffd23f] border border-black px-1.5 py-0.5 shadow-[1px_1px_0_#000] animate-bounce text-black"
+                class="bg-[#ffd23f] border border-black px-1.5 py-0.5 shadow-[1px_1px_0_#000] animate-bounce text-black whitespace-nowrap"
               >
                 curr ⬇
               </span>
               <span
                 v-else-if="node.status === 'matched'"
-                class="bg-[#3ddc97] border border-black px-1.5 py-0.5 shadow-[1px_1px_0_#000] text-black"
+                class="bg-[#3ddc97] border border-black px-1.5 py-0.5 shadow-[1px_1px_0_#000] text-black whitespace-nowrap"
               >
                 FOUND!
               </span>
