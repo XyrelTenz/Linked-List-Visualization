@@ -96,6 +96,29 @@ export const SLIDES: SlideMeta[] = [
   }
 ]
 
+function checkInitialLoading(): boolean {
+  if (typeof window === 'undefined') return false
+
+  try {
+    // If the app has already completed initial loading in this browser session, do not show again on reload
+    if (sessionStorage.getItem('visual_linkedlist_loaded') === 'true') {
+      return false
+    }
+
+    // If the user directly navigates to or reloads a specific route (e.g. /slide/5, /quiz, etc.),
+    // bypass the loading screen so the route is rendered immediately.
+    const path = window.location.pathname.replace(/\/+$/, '')
+    if (path && path !== '' && path !== '/' && path !== '/slide/1') {
+      sessionStorage.setItem('visual_linkedlist_loaded', 'true')
+      return false
+    }
+  } catch {
+    // fallback if sessionStorage is inaccessible
+  }
+
+  return true
+}
+
 export const useDeckStore = defineStore('deck', () => {
   const slides = ref<SlideMeta[]>(SLIDES)
   const currentSlideIndex = ref<number>(0)
@@ -109,7 +132,7 @@ export const useDeckStore = defineStore('deck', () => {
   const isFullscreen = ref<boolean>(false)
   const isPresentationMode = ref<boolean>(false)
   const isLaserActive = ref<boolean>(false)
-  const isLoading = ref<boolean>(true)
+  const isLoading = ref<boolean>(checkInitialLoading())
   const isHudVisible = ref<boolean>(true)
 
   // Sidebar circle expand navigation transition state

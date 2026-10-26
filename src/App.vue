@@ -28,6 +28,9 @@ watch(
 )
 
 function onLoadingFinished() {
+  try {
+    sessionStorage.setItem('visual_linkedlist_loaded', 'true')
+  } catch {}
   setTimeout(() => {
     deckStore.isLoading = false
   }, 100)
