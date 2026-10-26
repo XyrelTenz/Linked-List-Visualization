@@ -1,9 +1,9 @@
-# 📚 Linked Lists: Complete Guide to Data Structures & Algorithms
+# Linked Lists: Complete Guide to Data Structures & Algorithms
 
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 1. [Introduction & Core Concept](#1-introduction--core-concept)
 2. [Anatomy: The 6 Essential Building Blocks](#2-anatomy-the-6-essential-building-blocks)
 3. [Memory Architecture: Physical Heap vs. Logical Sequence](#3-memory-architecture-physical-heap-vs-logical-sequence)
